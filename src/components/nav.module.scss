@@ -1,0 +1,71 @@
+@import "../styles/colors";
+nav {
+  padding: 32px;
+  font-size: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.jBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  margin: 0;
+}
+li {
+  padding: 16px;
+  display: inline-block;
+}
+
+.hideOnMobile {
+  display: none;
+  @media screen and (min-width: 861px) {
+    display: block;
+  }
+}
+
+.mainNav {
+  max-width: 42%;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:first-child {
+    display: none;
+    @media screen and (min-width: 861px) {
+      display: flex;
+    }
+  }
+
+  &:nth-child(2) {
+    * {
+      padding: 16px 0;
+    }
+    ul {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $white;
+      height: 100vh;
+      z-index: 99;
+      overflow: hidden;
+      padding-top: 32px;
+      box-shadow: 0 4px 16px $secondary-dark;
+
+      li {
+        display: block;
+        padding: 16px 0;
+        width: 100%;
+        text-align: left;
+        padding-left: 32px;
+      }
+    }
+    @media screen and (min-width: 861px) {
+      display: none;
+    }
+  }
+}

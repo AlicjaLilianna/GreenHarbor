@@ -1,0 +1,154 @@
+$min-width: 360px;
+$max-width: 1440px;
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+@mixin font-hero {
+  $max-font: 175px;
+  $min-font: 54px;
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 900;
+  line-height: 105%;
+}
+
+@mixin font-hero-secondary {
+  $max-font: 48px;
+  $min-font: 21px;
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 900;
+  line-height: 105%;
+}
+
+@mixin font-hero-subtitle {
+  $max-font: 25px;
+  $min-font: 14px;
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: "Eczar";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+@mixin font-label {
+  $max-font: 18px;
+  $min-font: 14px;
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 105%;
+}
+
+@mixin font-paragraph {
+  $max-font: 18px;
+  $min-font: 14px;
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: "Eczar";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+@mixin font-section {
+  $max-font: 32px;
+  $min-font: 26px;
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 900;
+  line-height: 105%;
+}
+
+@mixin font-section-light {
+  $max-font: 32px;
+  $min-font: 26px;
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 105%;
+}
+
+@mixin font-subsection {
+  $max-font: 21px;
+  $min-font: 18px;
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 105%;
+}
+
+@mixin font-section-numbers {
+  $max-font: 40px;
+  $min-font: 30px;
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 900;
+  line-height: 105%;
+}
+
+.h1,
+h1 {
+  @include font-hero;
+  & + p {
+    @include font-hero-subtitle;
+  }
+}
+
+.h2,
+h2 {
+  @include font-hero-secondary;
+}
+
+.h3,
+h3 {
+  @include font-section;
+}
+
+.h4,
+h4 {
+  @include font-section-light;
+}
+
+.h5,
+h5 {
+  @include font-subsection;
+}
+
+body {
+  @include font-paragraph;
+}
+
+label {
+  @include font-label;
+}

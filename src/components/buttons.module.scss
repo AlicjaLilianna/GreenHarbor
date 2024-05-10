@@ -1,0 +1,60 @@
+@import "../styles/colors";
+
+@mixin btn {
+  border-radius: 5px;
+  font-family: "outfit";
+  font-size: 18px;
+  color: $ink-dark;
+  padding: 16px 32px;
+  cursor: pointer;
+  @media screen and (max-width: 860px) {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+.btnPrimary {
+  @include btn;
+  color: $ink-dark;
+  background-color: $secondary-main;
+  &:active {
+    background-color: $secondary-light;
+  }
+  &:hover {
+    background-color: $secondary-dark;
+    box-shadow: 0 4px 16px $secondary-dark;
+  }
+}
+
+.btnSecondary {
+  @include btn;
+  border-color: $black;
+  color: $black;
+  background-color: $white;
+  &:active {
+    border-color: $primary-main;
+    color: $primary-main;
+  }
+  &:hover {
+    border-color: $ink-dark;
+    color: $ink-dark;
+  }
+}
+
+.btnLink {
+  border-width: 0;
+  background: 0;
+  text-decoration: underline;
+  font-family: "Outfit";
+  padding: 16px 0;
+  font-size: 21px;
+  color: $primary-main;
+  cursor: pointer;
+
+  &:active {
+    color: $primary-dark;
+  }
+  &:hover {
+    color: $primary-light;
+  }
+}

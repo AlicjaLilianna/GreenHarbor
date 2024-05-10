@@ -1,0 +1,66 @@
+@import "../styles/colors";
+@import "../styles/typography";
+$min-vw: 360px;
+$max-vw: 1440px;
+
+.heroImage {
+  $max-width: 788px;
+  $min-width: 200px;
+  right: 0;
+  top: -152px;
+  height: 100vh;
+  position: absolute;
+  z-index: 0;
+  background-image: url("../assets/hero.jpg");
+  background-size: cover;
+  @media screen and (min-width: $min-vw) {
+    width: calc(
+      #{$min-width} + #{strip-unit($max-width - $min-width)} *
+        ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+    );
+  }
+  @media screen and (min-width: $max-vw) {
+    width: $max-width;
+  }
+}
+.heroContent {
+  $min: 12px;
+  $max: 160px;
+  z-index: 1;
+  text-align: left;
+  position: relative;
+  height: calc(100vh - 123px);
+  @media screen and (min-width: $min-vw) {
+    margin: 2rem 0 2rem
+      calc(
+        #{$min} + #{strip-unit($max - $min)} *
+          ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+      );
+  }
+  @media screen and (min-width: $max-vw) {
+    margin: 2rem 0 2rem $max;
+  }
+}
+.overTitle {
+  @include font-hero-secondary;
+  display: block;
+  text-transform: uppercase;
+  color: $secondary-main;
+}
+.title {
+  @include font-hero;
+  text-transform: uppercase;
+  color: $white;
+  .inMask {
+    background: url("../assets/hero.jpg") 0 0 / 200% no-repeat;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+h1 {
+  margin: 0;
+  & + p {
+    width: 35%;
+  }
+}

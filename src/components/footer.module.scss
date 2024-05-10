@@ -1,0 +1,27 @@
+@import "../styles/colors";
+@import "../styles/typography";
+
+.ctaSection {
+  background-image: url(../assets/hero.jpg);
+  background-size: cover;
+  display: flex;
+}
+.block {
+  margin: 130px auto;
+  padding: 2rem;
+  background-color: $white;
+  max-width: 65%;
+
+  @media screen and (min-width: 861px) {
+    padding: 4rem 5rem;
+    max-width: 45%;
+  }
+}
+h2 {
+  text-transform: uppercase;
+
+  em {
+    color: $secondary-main;
+    font-style: normal;
+  }
+}
